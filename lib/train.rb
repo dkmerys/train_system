@@ -59,5 +59,9 @@ class Train
     trains
   end
 
+  def cities
+    City.find_by_train(self.id)
+  end
+
   
 end

@@ -1,0 +1,10 @@
+<h4>Find a city you want to go</h4>
+<% if @cities.any? %>
+  <ul>
+    <% @cities.each do |city| %>
+      <li><a href="/trains/<%= city.train.id %>"><%= city.name %></a></li>
+    <% end %>
+  </ul>
+<% else %> 
+  <p>There are currently no cities to display.</p>
+<% end %>
