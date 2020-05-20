@@ -29,5 +29,17 @@ class City
     result = DB.exec("INSERT INTO cities (name, train_id) VALUES ('#{@name}', #{@train_id}) RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
+
+  def self.clear
+    DB.exec("DELETE FROM cities *;")
+  end
+
+  def self.find(id)
+    city = DB.exec("SELECT * FROM cities WHERE id = #{id};").first
+    name = city.fetch("name")
+    train_id = city.fetch("train_id").to_i
+    id = city.fetch("id").to_i
+    City.new({:name => name, :train_id => train_id, :id => id})
+  end
 end
     

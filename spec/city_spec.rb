@@ -36,4 +36,25 @@ describe '#City' do
     end
   end
 
+  describe('.clear') do
+    it("clears all cities") do
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      city2 = City.new({:name => "Kansas City", :id => nil, :train_id => @train.id})
+      city2.save()
+      City.clear
+      expect(City.all).to(eq([]))
+    end
+  end
+
+  describe('.find') do
+    it("finds a city by id") do
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      city2 = City.new({:name => "Kansas City", :id => nil, :train_id => @train.id})
+      city2.save()
+      expect(City.find(city.id)).to(eq(city))
+    end
+  end
+
 end

@@ -37,7 +37,7 @@ describe ('#Train') do
   end
 
   describe('.clear') do
-    it("clears all albums") do
+    it("clears all trains") do
       train = Train.new({:name => 'kiwi', :id => nil})
       train.save()
       train2 = Train.new({:name => 'strawberry', :id => nil})
