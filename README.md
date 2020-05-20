@@ -25,18 +25,20 @@ _This application will show a train system._
 ---Train---
 | 1. Creates a new train with id and name. []|
 | 2. Saves trains in a database. []|
-| 3. Shows all trains. []|
+| 3. Shows all trains. (.all method) []|
 | 4. Finds a train by id from a database. []|
 | 5. Updates a train in a database. []|
 | 6. Deletes a train from a database. []|
+| 7. Search a train from a database. []|
 
 ---City---
-| 7. Creates a new city with id and name.[]|
-| 8. Saves cities in a database.[]|
-| 9. Shows all cities. []|
-| 10. Finds a city by id from a database. []|
-| 11. Updates a city in a database. []|
-| 12. Deletes a city from a database. []|
+| 8. Creates a new city with id and name.[]|
+| 9. Saves cities in a database.[]|
+| 10. Shows all cities. []|
+| 11. Finds a city by id from a database. []|
+| 12. Updates a city in a database. []|
+| 13. Deletes a city from a database. []|
+| 14. Search a ciry from a database. []|
 
 ---Stop---
 | 13. Creates a new stop with id, name, train id and city id.[]|
@@ -47,8 +49,8 @@ _This application will show a train system._
 | 18. Deletes a stop from a database. []|
 
 
-| 13. Assigns a train(trains) to a stop(stops). []|
-| 14. See the list of a stop (cities) that have been assigned to a train(trains) []|
+| 19. Assigns a train(trains) to a stop(stops). []|
+| 20. See the list of a stop (cities) that have been assigned to a train(trains) []|
 
 ## Known Bugs
 
