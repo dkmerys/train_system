@@ -89,4 +89,12 @@ describe '#City' do
     end
   end
 
+  describe('#train') do
+    it("finds the train a city belongs to") do
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      expect(city.train()).to(eq(@train))
+    end
+  end
+
 end

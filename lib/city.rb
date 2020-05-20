@@ -62,5 +62,9 @@ class City
     end
     cities
   end
+
+  def train
+    Train.find(@train_id)
+  end
 end
     
