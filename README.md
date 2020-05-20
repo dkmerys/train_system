@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application will allow an office administrator to track patients in a doctor's office ._ 
+_This application will show a train system._ 
 
 ## Setup/Installation Requirements
 
@@ -22,22 +22,33 @@ _This application will allow an office administrator to track patients in a doct
 
 |   Behavior Description        |
 |-------------------------------|
-| 1. Creates a new train with a name, id, and specialty. []|
-| 2. Saves doctors in a database. []|
-| 3. Shows all doctors. []|
-| 4. Finds a doctor by id from a database. []|
-| 5. Updates a doctor in a database. []|
-| 6. Deletes a doctor from a database. []|
+---Train---
+| 1. Creates a new train with id and name. []|
+| 2. Saves trains in a database. []|
+| 3. Shows all trains. []|
+| 4. Finds a train by id from a database. []|
+| 5. Updates a train in a database. []|
+| 6. Deletes a train from a database. []|
 
-| 7. Creates a new patient with a name, id, and birthdate.[]|
-| 8. Saves patients in a database.[]|
-| 9. Shows all patient. []|
-| 10. Finds a patient by id from a database. []|
-| 11. Updates a patient in a database. []|
-| 12. Deletes a patient from a database. []|
+---City---
+| 7. Creates a new city with id and name.[]|
+| 8. Saves cities in a database.[]|
+| 9. Shows all cities. []|
+| 10. Finds a city by id from a database. []|
+| 11. Updates a city in a database. []|
+| 12. Deletes a city from a database. []|
 
-| 13. Assigns a doctor to a patient. []|
-| 14. See the list of patients that have been assigned to a doctor []|
+---Stop---
+| 13. Creates a new stop with id, name, train id and city id.[]|
+| 14. Saves stops in a database.[]|
+| 15. Shows all stops. []|
+| 16. Finds a stop by id from a database. []|
+| 17. Updates a stop in a database. []|
+| 18. Deletes a stop from a database. []|
+
+
+| 13. Assigns a train(trains) to a stop(stops). []|
+| 14. See the list of a stop (cities) that have been assigned to a train(trains) []|
 
 ## Known Bugs
 
@@ -45,7 +56,7 @@ _No known bugs at this time_
 
 ## Support and contact details
 
-_If you have any questions or any issues please feel free to submit an issue here: https://github.com/jozypants/doctors_office/issues_
+_If you have any questions or any issues please feel free to submit an issue here: https://github.com/jozypants/trains_office/issues_
 
 ## Technologies Used
 
