@@ -84,7 +84,7 @@ describe ('#Train') do
       train3 = Train.new({:name => 'blueberry', :id => nil})
       train3.save
       expect(Train.search(train.name)).to(eq([train]))
-      expect(Train.search("w")).to(eq([train, train2]))
+      expect(Train.search("W")).to(eq([train, train2]))
       expect(Train.search("berry")).to(eq([train2, train3]))
     end
   end

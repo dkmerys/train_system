@@ -48,7 +48,8 @@ class Train
   end
 
   def self.search(search_name)
-    returned_trains = DB.exec("SELECT * FROM trains WHERE name LIKE '%#{search_name}%'")
+    search_lower = search_name.downcase
+    returned_trains = DB.exec("SELECT * FROM trains WHERE lower(name) LIKE '%#{search_lower}%';")
     trains = []
     returned_trains.each() do |train|
       name = train.fetch("name")
