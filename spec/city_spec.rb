@@ -57,4 +57,13 @@ describe '#City' do
     end
   end
 
+  describe('#update') do
+    it("updates a city by id") do
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      city.update("Kansas City", @train.id)
+      expect(city.name).to eq("Kansas City")
+    end
+  end
+
 end

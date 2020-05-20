@@ -41,5 +41,12 @@ class City
     id = city.fetch("id").to_i
     City.new({:name => name, :train_id => train_id, :id => id})
   end
+
+  def update(name, train_id)
+    @name = name
+    @train_id = train_id
+    DB.exec("UPDATE cities SET name = '#{@name}', train_id = #{@train_id} WHERE id = #{@id};")
+  end
+  
 end
     
