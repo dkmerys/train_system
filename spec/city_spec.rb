@@ -66,4 +66,27 @@ describe '#City' do
     end
   end
 
+  describe('#delete') do
+    it("deletes a city by id") do
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      city2 = City.new({:name => "Kansas City", :id => nil, :train_id => @train.id})
+      city2.save()
+      city.delete()
+      expect(City.all).to(eq([city2]))
+    end
+  end
+
+  describe('.find_by_train') do
+    it("finds cities for a train") do
+      train2 = Train.new({:name => "strawberry", :id => nil})
+      train2.save
+      city = City.new({:name => "Portland", :id => nil, :train_id => @train.id})
+      city.save()
+      city2 = City.new({:name => "Kansas City", :id => nil, :train_id => train2.id})
+      city2.save()
+      expect(City.find_by_train(train2.id)).to(eq([city2]))
+    end
+  end
+
 end
