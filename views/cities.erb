@@ -2,9 +2,11 @@
 <% if @cities.any? %>
   <ul>
     <% @cities.each do |city| %>
-      <li><a href="/trains/<%= city.train.id %>"><%= city.name %></a></li>
+      <li><a href="/cities/<%= city.id %>"><%= city.name %></a></li>
     <% end %>
   </ul>
 <% else %> 
   <p>There are currently no cities to display.</p>
 <% end %>
+
+<a href="/">Return to home</a>
