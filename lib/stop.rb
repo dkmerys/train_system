@@ -1,11 +1,12 @@
 class Stop
-  attr_reader :id
+  attr_reader :id, :train_id, :city_id
   attr_accessor :name
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
     @id = attributes.fetch(:id)
-    # @train_id = attributes.fetch(:train_id)
+    @train_id = attributes.fetch(:train_id)
+    @city_id = attributes.fetch(:city_id)
   end
 
   def self.all
@@ -14,13 +15,16 @@ class Stop
     returned_stops.each do |stop|
       name = stop.fetch("name")
       id = stop.fetch("id").to_i
-      stops.push(Stop.new({:name => name, :id => id}))
+      train_id = stop.fetch("train_id").to_i
+      city_id = stop.fetch("city_id").to_i
+      stops.push(Stop.new({:name => name, :id => id, :train_id => train_id, :city_id => city_id}))
     end
     stops
   end
 
   def save
-    result = DB.exec("INSERT INTO stops (name) VALUES ('#{@name}') RETURNING id;")
+    result = DB.exec("INSERT INTO stops (name, train_id, city_id) VALUES ('#{@name}', #{@train_id}, #{@city_id} ) RETURNING id;")
+    # binding.pry
     @id = result.first().fetch("id").to_i
   end
 
@@ -36,7 +40,9 @@ class Stop
     stop = DB.exec("SELECT * FROM stops WHERE id = #{id};").first
     name = stop.fetch("name")
     id = stop.fetch("id").to_i
-    Stop.new({:name => name, :id => id})
+    train_id = stop.fetch("train_id").to_i
+    city_id = stop.fetch("city_id").to_i
+    Stop.new({:name => name, :id => id, :train_id => train_id, :city_id => city_id})
   end
 
   def delete
@@ -55,16 +61,22 @@ class Stop
       train_name = attributes.fetch(:train_name)
       train = DB.exec("SELECT * FROM trains WHERE lower(name)='#{train_name.downcase}';").first
       if train != nil
-        DB.exec("INSERT INTO stops (train_id, city_id) VALUES (#{train['id'].to_i}, #{@id});")
+        # binding.pry
+        DB.exec("INSERT INTO stops (train_id, city_id) VALUES (#{train['id'].to_i}, #{@city_id});")
       end
     end
   end
+
+  # def update(name)
+  #   @name = name
+  #   DB.exec("UPDATE authors SET name = '#{name}' WHERE id = #{@id};")
+  # end 
 
   def trains
     trains = []
     results = DB.exec("SELECT train_id FROM stops WHERE id = #{@id};")
     results.each do|result|
-      binding.pry
+      # binding.pry
         train_id = result.fetch("train_id").to_i
         train = DB.exec("SELECT * FROM trains WHERE id = #{train_id};")
         name = train.first().fetch("name")

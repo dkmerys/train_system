@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe '#City' do
   
-  before(:each) do 
-    @train = Train.new({:name => "kiwi", :id => nil})
-    @train.save
-  end
 
   describe('initialize') do
     it ("creates a new city") do
