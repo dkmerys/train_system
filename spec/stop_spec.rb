@@ -29,7 +29,7 @@ describe ('#Stop') do
       stop.save()
       stop2 = Stop.new({:name => 'apple', :id => nil})
       stop2.save()
-      expect(Stop.all).to(eq([stop,stop2]))
+      expect(Stop.all).to(eq([stop, stop2]))
     end
   end
 
@@ -51,6 +51,38 @@ describe ('#Stop') do
       stop2 = Stop.new({:name => 'apple', :id => nil})
       stop2.save()
       expect(Stop.find(stop.id)).to(eq(stop))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes a stop") do
+      stop = Stop.new({:name => 'kiwi', :id => nil})
+      stop.save()
+      stop2 = Stop.new({:name => 'apple', :id => nil})
+      stop2.save()
+      stop2.delete()
+      expect(Stop.all).to(eq([stop]))
+    end
+  end
+
+  describe('.search') do
+    it('searches a stop by name') do
+      stop = Stop.new({:name => 'kiwi', :id => nil})
+      stop.save()
+      stop2 = Stop.new({:name => 'apple', :id => nil})
+      stop2.save()
+      expect(Stop.search('kiwi')).to(eq([stop]))
+    end
+  end
+
+  describe('#update') do
+    it("adds a stop to a train") do
+      stop = Stop.new({:name => 'kiwi', :id => nil})
+      stop.save
+      train = Train.new({:name => 'red line', :id => nil})
+      train.save
+      stop.update({:train_name => 'red line'})
+      expect(stop.trains).to(eq([train]))
     end
   end
   
